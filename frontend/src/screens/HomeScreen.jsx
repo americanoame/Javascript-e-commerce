@@ -1,8 +1,24 @@
-import React from "react";
-import products from "../products";
+import React, { useState, useEffect } from "react";
 import Product from "../components/Product";
+import axios from "axios";
 
 const HomeScreen = () => {
+const [products, setProducts] = useState([]);
+
+
+useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const { data } = await axios.get("/api/products"); 
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  fetchProducts();
+}, []); //  
+
   return (
     <>
       <h1 className="flex justify-center items-center mt-16  text-2xl"></h1>
