@@ -55,6 +55,21 @@ const products = [
       numReviews: 8,
       additionalImages: ['/images/07.png', '/images/07.png', '/images/07.png', '/images/07.png'],
     },
+
+    {
+      _id: '5',
+      name: 'Wave Lite Analog Watch',
+      image: '/images/12.png',
+      hoverImage: '/images/13.png',
+      description:
+        'The Wave Lite Analog Watch combines elegance with durability. Featuring a sleek design and a water-resistant casing, it’s perfect for both everyday wear and special occasions. With a long-lasting battery and precision quartz movement, this watch offers both style and reliability for those on the go.',
+      category: 'Watches',
+      price: 99.99,
+      countInStock: 5,
+      rating: 4.5,
+      numReviews: 12,
+      additionalImages: ['/images/12.png', '/images/12.png', '/images/12.png', '/images/12.png'],
+    },
   ];
   
   export default products;
