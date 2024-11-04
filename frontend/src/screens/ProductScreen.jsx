@@ -1,14 +1,29 @@
-import React, { useState } from "react";
-import products from "../products";
+import React, { useState, useEffect } from "react";
 import Rating from "../components/Rating";
 import ProductScreenThumbnail from "../components/ProductScreenThumbnail";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ProductScreen = () => {
+  const [product, setProduct] = useState({});
   const [addi, setAddi] = useState("");
+
+
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
+  
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/${productId}`); // Adjust endpoint as needed
+        setProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
 
   // Function to set the selected image
   const handleAddi = (image) => {
