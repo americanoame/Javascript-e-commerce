@@ -85,11 +85,15 @@ const Header = () => {
             </div>
             <a
               href="/cart"
-              className="text-sm flex items-center"
+              className="text-sm flex items-center relative"
               onClick={toggleMenu}
             >
               CART
-              <span>0</span>
+              <span
+                className="menu-cart-quantity px-1 py-0 text-[16px] rounded-sm  ml-1"
+              >
+                0
+              </span>
             </a>
             <LuSearch className="text-[20px]" />
           </div>
