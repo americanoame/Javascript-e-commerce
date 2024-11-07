@@ -1,6 +1,6 @@
 const products = [
   {
-    _id: '1',
+    
     name: 'Zenith Over-Ear Wireless Headphones',
     image: '/images/01.png',
     hoverImage: '/images/02.png',
@@ -14,7 +14,7 @@ const products = [
     additionalImages: ['/images/01.png', '/images/01.png', '/images/01.png', '/images/01.png'],
   },
   {
-    _id: '2',
+   
     name: 'Echo ANC Wireless Earbuds',
     image: '/images/03.png',
     hoverImage: '/images/04.png',
@@ -28,7 +28,7 @@ const products = [
     additionalImages: ['/images/03.png', '/images/03.png', '/images/03.png', '/images/03.png'],
   },
   {
-    _id: '3',
+   
     name: 'Pulse Pro Wired Studio Headphones',
     image: '/images/05.png',
     hoverImage: '/images/06.png',
@@ -42,7 +42,7 @@ const products = [
     additionalImages: ['/images/05.png', '/images/05.png', '/images/05.png', '/images/05.png'],
   },
   {
-    _id: '4',
+   
     name: 'Wave Lite On-Ear Bluetooth Headphones',
     image: '/images/07.png',
     hoverImage: '/images/07.png',
@@ -57,7 +57,7 @@ const products = [
   },
 
   {
-    _id: '5',
+    
     name: 'Wave Lite Analog Watch',
     image: '/images/12.png',
     hoverImage: '/images/13.png',
