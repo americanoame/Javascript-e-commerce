@@ -5,9 +5,18 @@ import { CiMenuBurger } from "react-icons/ci";
 import { LiaTimesSolid } from "react-icons/lia";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+
+  const { cartItems } = useSelector((state) => state.cart);
+
+  // Calculate total quantity of items in the cart
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.qty, 0);
+
+
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
@@ -41,12 +50,14 @@ const Header = () => {
           {/* Desktop Menu */}
           <ul className="hidden lg:flex space-x-6 items-center">
             <li className="text-sm text-black">
-              <Link to="/cart">
-                CART
+            <Link to="/cart" className="relative flex items-center">
+                CART{" "}
                 <span
-                  className={`px-1 py-0 text-[16px] rounded-sm  ml-1  text-black`}
+                  className={`cart-quantity py-0 text-[12px] rounded-full ${
+                    totalQuantity > 0 ? "bg-green-500" : "bg-pink-800"
+                  } text-white`}
                 >
-                  0
+                  {totalQuantity}
                 </span>
               </Link>
             </li>
@@ -90,9 +101,11 @@ const Header = () => {
             >
               CART
               <span
-                className="menu-cart-quantity px-1 py-0 text-[16px] rounded-sm  ml-1"
+                className={`menu-cart-quantity px-1 py-0 text-[16px] rounded-sm ml-1 ${
+                  totalQuantity > 0 ? "bg-green-500" : "bg-pink-800"
+                } text-white`}
               >
-                0
+                {totalQuantity}
               </span>
             </a>
             <LuSearch className="text-[20px]" />
