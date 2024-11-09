@@ -1,16 +1,24 @@
 import React, { useState } from "react";
-import Rating from "../components/Rating";
+import { FaArrowAltCircleUp, FaArrowAltCircleDown } from "react-icons/fa";
 import ProductScreenThumbnail from "../components/ProductScreenThumbnail";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Rating from "../components/Rating";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
+import { addToCart } from "../slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 const ProductScreen = () => {
   const [addi, setAddi] = useState("");
   const { id: productId } = useParams();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Get the quantity of this product in the cart from Redux
+  const qty = useSelector((state) =>
+    state.cart.cartItems.find((item) => item._id === productId)?.qty || 1
+  );
 
   // Use the getProductDetails query to fetch the product
   const {
@@ -29,8 +37,29 @@ const ProductScreen = () => {
     setAddi("");
   };
 
+  const incrementQty = () => {
+    if (qty < product.countInStock) {
+      dispatch(addToCart({ ...product, qty: qty + 1 })); // Incrementing via Redux
+    }
+  };
+
+  const decrementQty = () => {
+    if (qty > 1) {
+      dispatch(addToCart({ ...product, qty: qty - 1 })); // Decrementing via Redux
+    }
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }));
+    
+    navigate("/cart");
+    
+  };
+
+  
+
   return (
-    <div>
+    <>
       {isLoading ? (
         <h1 className="flex justify-center items-center h-screen text-2xl">
           Loading...
@@ -48,7 +77,7 @@ const ProductScreen = () => {
           <main className="flex-1 flex items-start justify-center">
             <section className="max-w-7xl mx-auto flex justify-center items-start py-28 text-black">
               <Link to="/" className=" ">
-                <div className="text-red-800 text-sm md:text-xs lg:text-sm xl:text-sm">
+                <div className=" text-red-800 text-sm md:text-xs lg:text-sm xl:text-sm">
                   GO BACK
                 </div>
               </Link>
@@ -62,12 +91,20 @@ const ProductScreen = () => {
                 />
 
                 <div className="flex-1 ml-5 mr-2">
+                  {/* Price and Stock Status Card moved above product name */}
+
                   <div className="p-4">
-                    <p className="text-xl font-bold mb-2">$ {product.price}</p>
+                    <p className="text-xl font-bold mb-2">${product.price}</p>
                     <p className="text-sm font-semibold">
-                      <span className="text-green-600">
-                        {product.countInStock} Products in Stock
-                      </span>
+                      {product.countInStock > 0 ? (
+                        <span className="text-green-600">
+                          {product.countInStock} Produts in Stock
+                        </span>
+                      ) : (
+                        <span className="text-red-600">
+                          Produt Out of Stock
+                        </span>
+                      )}
                     </p>
                   </div>
 
@@ -84,29 +121,48 @@ const ProductScreen = () => {
                     {product.name}
                   </h2>
 
-                  <div className="mt-4">
-                    <label
-                      htmlFor="quantity"
-                      className="block text-sm font-bold text-gray-900 mb-2"
-                    >
-                      Qty:
-                    </label>
-                    <div className="flex items-center space-x-2">
-                      <button
-                        className="text-red-900 text-2xl opacity-50 cursor-not-allowed"
-                        aria-label="Decrease quantity"
-                        disabled
+                  {product.countInStock > 0 && (
+                    <div className="mt-4">
+                      <label
+                        htmlFor="quantity"
+                        className="block text-sm font-bold text-gray-900 mb-2"
                       >
-                        <span>▼</span>
-                      </button>
-                      <span className="px-4 py-2 border border-gray-300">
-                        1
-                      </span>
-                      <button className="text-green-600 text-2xl">
-                        <span>▲</span>
-                      </button>
+                        Qty:
+                      </label>
+                      <div className="flex items-center space-x-2">
+                        {/* Decrement button */}
+                        <button
+                          onClick={decrementQty}
+                          className={`text-red-900 text-2xl ${
+                            qty === 1 ? "opacity-50 cursor-not-allowed" : ""
+                          }`}
+                          aria-label="Decrease quantity"
+                          disabled={qty === 1}
+                        >
+                          <FaArrowAltCircleDown />
+                        </button>
+
+                        {/* Display for selected quantity */}
+                        <span className="px-4 py-2 border border-gray-300 w-12 text-center">
+                          {qty}
+                        </span>
+
+                        {/* Increment button */}
+                        <button
+                          onClick={incrementQty}
+                          className={`text-green-600 text-2xl ${
+                            qty === product.countInStock
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          }`}
+                          aria-label="Increase quantity"
+                          disabled={qty === product.countInStock}
+                        >
+                          <FaArrowAltCircleUp />
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <div className="flex items-center py-4">
                     <button
@@ -116,14 +172,14 @@ const ProductScreen = () => {
                           : "bg-red-900 hover:bg-red-800"
                       } text-white text-sm md:text-xs lg:text-lg xl:text-xl px-4 py-2 md:px-3 lg:px-12 xl:px-16 transition duration-300`}
                       disabled={product.countInStock === 0}
+                      onClick={addToCartHandler}
                     >
                       ADD TO CART
                     </button>
                   </div>
 
-                  {/* Product Description */}
-                  <div className="ml-4">
-                    <p className="text-sm md:text-base lg:text-lg leading-relaxed">
+                  <div className="">
+                    <p className="text-sm md:text-base lg:text-lg mb-4 leading-relaxed">
                       {product.description}
                     </p>
                   </div>
@@ -133,8 +189,7 @@ const ProductScreen = () => {
           </main>
         </div>
       )}
-    </div>
+    </>
   );
 };
-
 export default ProductScreen;
