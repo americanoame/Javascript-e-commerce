@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-
-import { LuSearch } from "react-icons/lu";
 import { CiMenuBurger } from "react-icons/ci";
 import { LiaTimesSolid } from "react-icons/lia";
 import { FaUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -19,6 +17,7 @@ const Header = () => {
 
   const menuRef = useRef(null);
 
+  
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -67,7 +66,7 @@ const Header = () => {
               <a href="/">Sign in</a>
             </li>
 
-            <LuSearch className="text-[20px]" />
+            
           </ul>
 
           {/* Mobile Menu Icon */}
@@ -108,7 +107,7 @@ const Header = () => {
                 {totalQuantity}
               </span>
             </a>
-            <LuSearch className="text-[20px]" />
+            
           </div>
         </nav>
       </div>
