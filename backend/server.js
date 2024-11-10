@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 dotenv.config(); 
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -11,6 +12,16 @@ const port = process.env.PORT || 4000;
 connectDB();
 
 const app = express();
+
+// Body parser middleware to parse the body of the request
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Cookie parser middleware to parse the cookies from the request object
+// alows to acces reqest.cookies and since  the cookie is called JWT we can access it by req.cookies.JWT
+// we can do this in the authMiddleware.js file
+app.use(cookieParser());
+
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
