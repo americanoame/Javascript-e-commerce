@@ -3,6 +3,8 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 
+import { LuSearch } from "react-icons/lu";
+
 const HomeScreen = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
 
@@ -17,10 +19,9 @@ const HomeScreen = () => {
             "An error occurred while fetching the products."}
         </div>
       ) : (
-        <>
-          <h1 className="flex justify-center items-center mt-16  text-2xl"></h1>
-
-          <h1 className="text-center text-2xl tracking-wider font-thin  p-8">
+        <div className="mt-16">
+          <h1 className="text-center text-[18px] sm:text-xl md:text-2xl lg:text-3xl tracking-wider font-thin p-8 flex items-center justify-center">
+            <LuSearch className="text-[24px] mr-4" />
             FEATURED PRODUCTS
           </h1>
           <div className="max-w-[2200px] mx-auto">
@@ -30,7 +31,7 @@ const HomeScreen = () => {
               ))}
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );
