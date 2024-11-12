@@ -8,6 +8,7 @@ html, body {
     padding: 0;
     box-sizing: border-box;
     height: 100%;
+    
   }
   
   #app-root {
@@ -40,7 +41,7 @@ html, body {
 
 
 
-  .cart-quantity{
+  .cart-quantity {
     font-size: 10px;
     width: 18px;
     height: 18px;
@@ -49,8 +50,13 @@ html, body {
     top: -10px;
     right: -15px;
     border-radius: 100%;
-    color: #fff; 
+    color: #fff;
     box-shadow: rgba(60, 64, 67, 0.15) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
+    background: linear-gradient(to right, #b9bb48, #38a169); 
+  }
+  
+  .cart-quantity.pink-gradient {
+    background: linear-gradient(to right, #9b2c2c, #c53030); 
   }
   
   .menu-cart-quantity {
@@ -66,5 +72,21 @@ html, body {
     box-shadow: rgba(60, 64, 67, 0.15) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
   }
   
+
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
   
+  .heartbeat {
+    animation: heartbeat 0.6s ease-in-out;
+  }
   
+
+  .mobile-menu-gradient {
+    background: linear-gradient(to right, #b9bb48, #38a169);
+  }
