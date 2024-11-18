@@ -16,9 +16,9 @@ import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ShippingScreen from "./screens/ShippingScreen";
-import PaymentScreen from "./screens/PaymentScreen.jsx";
+import PaymentScreen from "./screens/PaymentScreen";
 import PrivateRoute from "./components/PrivateRoute";
-import PlaceOdersScreen from "./screens/PlaceOdersScreen.jsx";
+import PlaceOdersScreen from "./screens/PlaceOdersScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
