@@ -32,7 +32,7 @@ const Product = ({ product }) => {
       </Link>
 
       {/* Product name */}
-      <div className="mt-4 w-full text-center px-7 text-white">
+      <div className="mt-4 w-full text-center px-7 text-gray-950">
         <h2 className="text-2xl tracking-widest font-extralight sm:text-xl">
           {product.name}
         </h2>
