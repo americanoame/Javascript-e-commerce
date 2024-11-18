@@ -28,38 +28,54 @@ const cartSlice = createSlice({
         // item to it and then assign it to the state variable
       }
 
-
       // its coming from the cartUtils utils folder
-        return updateCart(state);
-      
+      return updateCart(state);
     },
 
-    
-
     incrementQty: (state, action) => {
-        const item = state.cartItems.find((x) => x._id === action.payload._id);
-        if (item && item.qty < item.countInStock) {
-            item.qty += 1;
-        }
-        return updateCart(state);
+      const item = state.cartItems.find((x) => x._id === action.payload._id);
+      if (item && item.qty < item.countInStock) {
+        item.qty += 1;
+      }
+      return updateCart(state);
     },
 
     decrementQty: (state, action) => {
-        const item = state.cartItems.find((x) => x._id === action.payload._id);
-        if (item && item.qty > 1) {
-            item.qty -= 1;
-        }
-        return updateCart(state);
+      const item = state.cartItems.find((x) => x._id === action.payload._id);
+      if (item && item.qty > 1) {
+        item.qty -= 1;
+      }
+      return updateCart(state);
     },
 
     removeFromCart: (state, action) => {
-        state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
-        return updateCart(state);
+      state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
+      return updateCart(state);
     },
 
+    saveShippingAddress: (state, action) => {
+      state.shippingAddress = action.payload;
+      return updateCart(state);
+    },
+    savePaymentMethod: (state, action) => {
+      state.paymentMethod = action.payload;
+      return updateCart(state);
+    },
+    clearCartitems: (state, action) => {
+      state.cartItems = [];
+      return updateCart(state);
+    }
   },
 });
 
-export const { addToCart, removeFromCart, incrementQty, decrementQty } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  incrementQty,
+  decrementQty,
+  saveShippingAddress,
+  savePaymentMethod,
+  clearCartitems,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
