@@ -19,8 +19,13 @@ const HomeScreen = () => {
             "An error occurred while fetching the products."}
         </div>
       ) : (
-        <div className="mt-16">
-          <h1 className="text-center text-[18px] sm:text-xl md:text-2xl lg:text-3xl tracking-wider font-thin p-8 flex items-center justify-center">
+        <div
+          className="max-w-[2230px] mx-auto mt-16"
+          style={{
+            // background: "linear-gradient(to right, #b9bb48, #38a169)", 
+          }}
+        >
+          <h1 className="text-center text-black text-[18px] sm:text-xl md:text-2xl lg:text-3xl tracking-wider font-thin p-8 flex items-center justify-center">
             <LuSearch className="text-[24px] mr-4" />
             FEATURED PRODUCTS
           </h1>
