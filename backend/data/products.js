@@ -1,6 +1,5 @@
 const products = [
   {
-    
     name: 'Zenith Over-Ear Wireless Headphones',
     image: '/images/01.png',
     hoverImage: '/images/02.png',
@@ -44,8 +43,8 @@ const products = [
   {
    
     name: 'Wave Lite On-Ear Bluetooth Headphones',
-    image: '/images/07.png',
-    hoverImage: '/images/07.png',
+    image: '/images/06.png',
+    hoverImage: '/images/02.png',
     description:
       'Wave Lite On-Ear Bluetooth Headphones provide a balance of portability and high-quality sound. With a foldable design and 30 hours of battery life, these headphones are excellent for casual listening and easy to carry. Enhanced with deep bass and clear vocals, they suit music lovers on a budget.',
     category: 'Headphones',
@@ -53,7 +52,7 @@ const products = [
     countInStock: 0,
     rating: 4.1,
     numReviews: 8,
-    additionalImages: ['/images/07.png', '/images/07.png', '/images/07.png', '/images/07.png'],
+    additionalImages: ['/images/05.png', '/images/05.png', '/images/05.png', '/images/05.png'],
   },
 
   {
@@ -69,6 +68,34 @@ const products = [
     rating: 4.5,
     numReviews: 12,
     additionalImages: ['/images/12.png', '/images/12.png', '/images/12.png', '/images/12.png'],
+  },
+
+
+  {
+    name: 'Vortex Noise-Canceling Over-Ear Headphones',
+    image: '/images/02.png',
+    hoverImage: '/images/01.png',
+    description:
+      'The Vortex Noise-Canceling Over-Ear Headphones are designed to block out external noise, providing an immersive listening experience. With advanced noise-canceling technology, up to 30 hours of battery life, and a comfortable over-ear design, these headphones are perfect for travelers and those who want a distraction-free environment.',
+    category: 'Headphones',
+    price: 249.99,
+    countInStock: 8,
+    rating: 4.8,
+    numReviews: 22,
+    additionalImages: ['/images/01.png', '/images/01.png', '/images/01.png', '/images/01.png'],
+  },
+  {
+    name: 'Echo Sport True Wireless Earbuds',
+    image: '/images/04.png',
+    hoverImage: '/images/03.png',
+    description:
+      'The Echo Sport True Wireless Earbuds are perfect for an active lifestyle. They feature sweat-resistant design, secure fit, and up to 12 hours of playtime. With premium sound quality and easy controls, these earbuds are ideal for workouts, runs, and all-day comfort.',
+    category: 'Headphones',
+    price: 89.99,
+    countInStock: 15,
+    rating: 4.4,
+    numReviews: 40,
+    additionalImages: ['/images/03.png', '/images/03.png', '/images/03.png', '/images/03.png'],
   },
 ];
 
