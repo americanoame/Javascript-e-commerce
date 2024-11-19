@@ -6,7 +6,6 @@ import Rating from "../components/Rating";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 const ProductScreen = () => {
   const [addi, setAddi] = useState("");
@@ -16,8 +15,9 @@ const ProductScreen = () => {
   const navigate = useNavigate();
 
   // Get the quantity of this product in the cart from Redux
-  const qty = useSelector((state) =>
-    state.cart.cartItems.find((item) => item._id === productId)?.qty || 1
+  const qty = useSelector(
+    (state) =>
+      state.cart.cartItems.find((item) => item._id === productId)?.qty || 1
   );
 
   // Use the getProductDetails query to fetch the product
@@ -51,12 +51,9 @@ const ProductScreen = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    
-    navigate("/cart");
-    
-  };
 
-  
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -69,18 +66,16 @@ const ProductScreen = () => {
           {error?.data?.message ||
             error.error ||
             "An error occurred while fetching the product details."}
-          {/* i'm not getting the error.message when i have the error i'm getting the regular react IU
-      telling me to do a bedtter error boundry i have to fix that */}
         </div>
       ) : (
         <div className="flex flex-col min-h-screen">
           <main className="flex-1 flex items-start justify-center">
             <section className="max-w-7xl mx-auto flex justify-center items-start py-28 text-black">
-              <Link to="/" className=" ">
+              {/* <Link to="/" className=" ">
                 <div className=" text-red-800 text-sm md:text-xs lg:text-sm xl:text-sm">
                   GO BACK
                 </div>
-              </Link>
+              </Link> */}
 
               <div className="flex flex-wrap items-center">
                 <ProductScreenThumbnail
@@ -117,7 +112,7 @@ const ProductScreen = () => {
                     </div>
                   )}
 
-                  <h2 className="text-2xl md:text-2xl lg:text-2xl xl:text-xl font-bold mb-4 mt-4">
+                  <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-xl font-bold mb-4 mt-4">
                     {product.name}
                   </h2>
 
@@ -133,7 +128,7 @@ const ProductScreen = () => {
                         {/* Decrement button */}
                         <button
                           onClick={decrementQty}
-                          className={`text-red-900 text-2xl ${
+                          className={`text-red-500 text-[18px] ${
                             qty === 1 ? "opacity-50 cursor-not-allowed" : ""
                           }`}
                           aria-label="Decrease quantity"
@@ -143,14 +138,14 @@ const ProductScreen = () => {
                         </button>
 
                         {/* Display for selected quantity */}
-                        <span className="px-4 py-2 border border-gray-300 w-12 text-center">
+                        <span className="px-4 py-2 border border-gray-300 w-12 text-center rounded-lg">
                           {qty}
                         </span>
 
                         {/* Increment button */}
                         <button
                           onClick={incrementQty}
-                          className={`text-green-600 text-2xl ${
+                          className={`text-green-500 text-[18px] ${
                             qty === product.countInStock
                               ? "opacity-50 cursor-not-allowed"
                               : ""
@@ -169,7 +164,7 @@ const ProductScreen = () => {
                       className={`${
                         product.countInStock === 0
                           ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-red-900 hover:bg-red-800"
+                          : "bg-gradient-to-r from-[#ff7e5f] to-[#feb47b] hover:from-[#ffa58c] hover:to-[#ffbf9c] rounded-lg"
                       } text-white text-sm md:text-xs lg:text-lg xl:text-xl px-4 py-2 md:px-3 lg:px-12 xl:px-16 transition duration-300`}
                       disabled={product.countInStock === 0}
                       onClick={addToCartHandler}
