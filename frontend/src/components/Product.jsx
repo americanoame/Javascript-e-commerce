@@ -25,7 +25,7 @@ const Product = ({ product }) => {
         </figure>
 
         <div className="absolute inset-0 transform translate-y-full group-hover:translate-y-0 duration-500 ease-in-out  items-center justify-center px-1 rounded-full opacity-0 group-hover:opacity-100 w-12 h-24 lg:flex hidden">
-          <button className="text-white text-[12px] font-thin bg-red-500  bg-opacity-90 py-2 px-1 rounded-full shadow-2xl gradient-text">
+          <button className="text-white text-[8px] font-thin bg-gradient-to-r from-[#feb47b] to-[#ff7e5f] hover:opacity-80   bg-opacity-90 py-2 px-1 rounded-full shadow-2xl">
             ADD TO CART
           </button>
         </div>
