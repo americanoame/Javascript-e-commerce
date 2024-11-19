@@ -46,7 +46,7 @@ const Header = () => {
         >
           <div className="text-2xl   p-2 text-gray-950 rounded-full">
             <Link to="/">
-              <h2 style={{ fontWeight: "bold" }}>HeadPopp</h2>
+              <h2 style={{ fontWeight: "bold" }}>Head<span className="text-red-800">Popp</span></h2>
             </Link>
           </div>
 
