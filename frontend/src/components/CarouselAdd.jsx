@@ -22,8 +22,8 @@ const CarouselAdd = () => {
   };
 
   return (
-    <div className="relative max-w-full mx-auto mt-12 bg-red-900 p-5 rounded-3xl">
-      <div className="relative w-full h-[40vh] sm:h-[35vh] md:h-[30vh] lg:h-[40vh] xl:h-[45vh]  ipadpro:h-[20vh] nesthub:h-[40vh] nesthubmax:h-[40vh]  overflow-hidden rounded-2xl">
+    <div className="relative max-w-full mx-auto mt-12 bg-gradient-to-r from-[#feb47b] to-[#ff7e5f] p-5 rounded-3xl shadow-xl">
+      <div className="relative w-full h-[40vh] sm:h-[35vh] md:h-[30vh] lg:h-[40vh] xl:h-[45vh]  ipadpro:h-[20vh] nesthub:h-[40vh] nesthubmax:h-[40vh] overflow-hidden">
         <img
           src={images[currentIndex]}
           alt={`Slide ${currentIndex + 1}`}
