@@ -17,15 +17,15 @@ export const protect = asyncHandler(async (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET); // we wanna get the user from the database thats matched the user id now decoded is object that has the userId
       req.user = await User.findById(decoded.userId).select("-password"); // therefore we can say decoded.id because we set the userId in the jwt.sign
-      next();
+      return next();
     } catch (error) {
       console.log(error);
       res.status(401);
-      throw new Error("Not authorized, token failed");
+      return next(new Error("Not authorized, token failed"));
     }
   } else {
     res.status(401);
-    throw new Error("Not authorized, no token");
+   return next(new Error("Not authorized, no token"));
   }
 });
 
@@ -33,9 +33,9 @@ export const protect = asyncHandler(async (req, res, next) => {
 
 export const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
-    next();
+   return next();
   } else {
     res.status(401);
-    throw new Error("Not authorized as an admin");
+    return next(new Error("Not authorized as an admin"));
   }
 };
