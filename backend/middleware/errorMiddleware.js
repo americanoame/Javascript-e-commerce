@@ -6,6 +6,15 @@ const notFound = (req, res, next) => {
 
 
 const errorHandler = (err, req, res, next) => {
+
+  
+  // Check if headers have already been sent
+  if (res.headersSent) {
+    return next(err); // Pass to the default Express error handler
+  }
+
+  
+
     let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     let message = err.message;
 
