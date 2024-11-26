@@ -22,7 +22,6 @@ const RegisterScreen = () => {
   const isButtonDisabled = isLoading || email.trim() === '' || password.trim() === '';
 
 
-
   const { userInfo } = useSelector((state) => state.auth);
 
   const { search } = useLocation();
@@ -39,7 +38,7 @@ const RegisterScreen = () => {
     
     e.preventDefault();
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       toast.error("passwords do not match");
     } else {
       try {
