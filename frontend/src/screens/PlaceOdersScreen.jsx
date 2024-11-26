@@ -25,7 +25,7 @@ const placeOrderScreen = () => {
 
   useEffect(() => {
     if (!cart.shippingAddress.address) {
-      navigate("/shipping");
+      
     } else if (!cart.paymentMethod) {
       navigate("/payment");
     }
