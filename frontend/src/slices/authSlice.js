@@ -2,6 +2,8 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
 // localStorage get usserInfo from local storage if it exists, else set it to null
 // its gonna be stored in local storage as a string, so we need to parse it back to javascript object
 
@@ -21,9 +23,10 @@ const authSlice = createSlice({
       localStorage.setItem("userInfo", JSON.stringify(action.payload));
       // and the user gets put in the local storage user name and password 
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.userInfo = null;
-      localStorage.removeItem("userInfo"); 
+      localStorage.removeItem("userInfo"); // Clear userInfo only
+      localStorage.removeItem("cart");
     },
   },
 });
