@@ -6,6 +6,7 @@ import { logout } from "../slices/authSlice";
 import DesktopMenu from "../components/DesktopMenu";
 import MobileMenuIcon from "../components/MobileMenuIcon";
 import MobileMenu from "../components/MobileMenu";
+import { clearCartitems } from "../slices/cartSlice";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,6 +26,8 @@ const Header = () => {
     try {
       await logoutApiCall();
       dispatch(logout());
+
+      dispatch(clearCartitems());
 
       navigate("/");
     } catch (err) {
