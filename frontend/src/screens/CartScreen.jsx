@@ -1,13 +1,12 @@
-// CartScreen.js
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
 import OrderSummary from "../components/OrderSummary";
-import { removeFromCart } from "../slices/cartSlice";
+
 
 const CartScreen = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -23,9 +22,7 @@ const CartScreen = () => {
   const shippingCost = itemsTotal < 100 ? 10 : 0;
   const orderTotal = itemsTotal + estimatedTax + shippingCost;
 
-  const removeFromCartHandler = async (id) => {
-    dispatch(removeFromCart(id));
-  };
+  
 
   const checkOutHandler = () => {
     if (userInfo) {
