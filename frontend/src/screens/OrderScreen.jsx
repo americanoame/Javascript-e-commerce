@@ -73,7 +73,7 @@ const OrderScreen = () => {
   async function onApproveTest() {
     await payOrder({ orderId, details: { payer: {} } });
     refetch();
-    toast.success("Payment seccessfu");
+    toast.success("Payment seccessful");
   }
 
   function onError() {
@@ -241,8 +241,3 @@ const OrderScreen = () => {
 };
 
 export default OrderScreen;
-
-// sb-xduuj34195545@personal.example.com
-
-// z@1a7F}3
-
