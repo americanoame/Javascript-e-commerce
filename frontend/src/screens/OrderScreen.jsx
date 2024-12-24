@@ -58,12 +58,13 @@ const OrderScreen = () => {
     }
   }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal]);
 
+  
   function onApprove(data, actions) {
     return actions.order.capture().then(async function (details) {
       try {
         await payOrder({ orderId, details });
         refetch();
-        toast.success("Payment seccessfu");
+        toast.success("Payment seccessful");
       } catch (err) {
         toast.error(err?.data?.message || err.message);
       }
